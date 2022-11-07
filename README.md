@@ -41,6 +41,4 @@ Future:
 - Google ads integration
 - Watch 20 sec ad if habits not completed by goal
 
-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
-
 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
