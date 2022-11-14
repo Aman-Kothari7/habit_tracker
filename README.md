@@ -42,3 +42,37 @@ Future:
 - Watch 20 sec ad if habits not completed by goal
 
 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
+
+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
+
+
+
+backgroundColor: Colors.grey[300],
+        floatingActionButton: MyFloatingActionButton(
+            onPressed: createNewHabit,
+        ),
+        body: ListView(
+              children: [
+                //monthly summary heat map
+                MonthlySummary(
+                    datasets: db.heatMapDataSet,
+                    startDate: _myBox.get("START_DATE")),
+
+                //list of habits
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: db.todaysHabitList.length,
+                  itemBuilder: (context, index) {
+                    //habit tiles
+                    return HabitTile(
+                      habitName: db.todaysHabitList[index][0],
+                      habitCompleted: db.todaysHabitList[index][1],
+                      onChanged: (value) => checkBoxTapped(value, index),
+                      settingsTapped: (context) => openHabitSettings(index),
+                      deleteTapped: (context) => deleteHabit(index),
+                    );
+                  },
+                ),
+              ],
+            ),

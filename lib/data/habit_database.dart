@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/datetime/date_time.dart';
 import 'package:hive/hive.dart';
@@ -101,5 +103,21 @@ class HabitDatabase {
       heatMapDataSet.addEntries(percentForEachDay.entries);
       print(heatMapDataSet);
     }
+  }
+
+  bool checkCompleteHabits() {
+    bool todayHabitsCompleted = false;
+    int countComplete = 0;
+    for (int i = 0; i < todaysHabitList.length; i++) {
+      if (todaysHabitList[i][1] == true) {
+        countComplete++;
+      }
+    }
+
+    if (todaysHabitList.length == countComplete) {
+      todayHabitsCompleted = true;
+    }
+
+    return todayHabitsCompleted;
   }
 }

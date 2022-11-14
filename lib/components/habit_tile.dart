@@ -39,6 +39,7 @@ class HabitTile extends StatelessWidget {
           )
         ]),
         child: Container(
+          height: 75,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             //color: Colors.grey[100],
@@ -63,7 +64,7 @@ class HabitTile extends StatelessWidget {
               const Expanded(child: SizedBox()),
               Icon(
                 Icons.arrow_left,
-                size: 40.0,
+                size: 33.0,
                 color: habitCompleted == true ? Colors.white : Colors.black,
               ),
             ],

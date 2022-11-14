@@ -1,3 +1,4 @@
+//import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit_database.dart';
 import 'package:hive/hive.dart';
@@ -8,6 +9,8 @@ import '../components/my_fab.dart';
 import '../components/my_alert_box.dart';
 import 'home_page2.dart';
 
+import 'dart:developer';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -16,8 +19,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //int currentIndex = 0;
   HabitDatabase db = HabitDatabase();
   final _myBox = Hive.box("Habit_Database");
+  var _isVisible = true;
+
+  //final _controller = ConfettiController();
+
+  /*@override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }*/
 
   @override
   void initState() {
@@ -111,40 +124,49 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.grey[300],
-        floatingActionButton: MyFloatingActionButton(
-          onPressed: createNewHabit,
-        ),
-        body: PageView(
-          children: [
-            ListView(
-              children: [
-                //monthly summary heat map
-                MonthlySummary(
-                    datasets: db.heatMapDataSet,
-                    startDate: _myBox.get("START_DATE")),
+    /*if (db.checkCompleteHabits() == true) {
+      _controller.play();
+    } else {
+      _controller.stop();
+    }*/
 
-                //list of habits
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: db.todaysHabitList.length,
-                  itemBuilder: (context, index) {
-                    //habit tiles
-                    return HabitTile(
-                      habitName: db.todaysHabitList[index][0],
-                      habitCompleted: db.todaysHabitList[index][1],
-                      onChanged: (value) => checkBoxTapped(value, index),
-                      settingsTapped: (context) => openHabitSettings(index),
-                      deleteTapped: (context) => deleteHabit(index),
-                    );
-                  },
-                ),
-              ],
-            ),
-            const HomePage2(),
-          ],
-        ));
+    return Stack(
+      children: [
+        Scaffold(
+          backgroundColor: Colors.grey[300],
+          floatingActionButton: MyFloatingActionButton(
+            onPressed: createNewHabit,
+          ),
+          body: ListView(
+            children: [
+              //monthly summary heat map
+              MonthlySummary(
+                  datasets: db.heatMapDataSet,
+                  startDate: _myBox.get("START_DATE")),
+
+              //list of habits
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: db.todaysHabitList.length,
+                itemBuilder: (context, index) {
+                  //habit tiles
+                  return HabitTile(
+                    habitName: db.todaysHabitList[index][0],
+                    habitCompleted: db.todaysHabitList[index][1],
+                    onChanged: (value) => checkBoxTapped(value, index),
+                    settingsTapped: (context) => openHabitSettings(index),
+                    deleteTapped: (context) => deleteHabit(index),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+        /*ConfettiWidget(
+          confettiController: _controller,
+        )*/
+      ],
+    );
   }
 }
