@@ -1,4 +1,6 @@
-//import 'package:confetti/confetti.dart';
+import 'dart:math';
+
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/data/habit_database.dart';
 import 'package:hive/hive.dart';
@@ -24,18 +26,13 @@ class _HomePageState extends State<HomePage> {
   final _myBox = Hive.box("Habit_Database");
   var _isVisible = true;
 
-  //final _controller = ConfettiController();
-
-  /*@override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }*/
+  late ConfettiController _controller;
 
   @override
   void initState() {
     // TODO: implement initState
     //checking if there is not current habit
+
     if (_myBox.get("CURRENT_HABIT_LIST") == null) {
       db.createDefaultData();
     }
@@ -48,6 +45,9 @@ class _HomePageState extends State<HomePage> {
     db.updateDatabase();
 
     super.initState();
+
+    _controller =
+        ConfettiController(duration: const Duration(milliseconds: 50));
   }
 
   //checkbox was tapped
@@ -56,6 +56,12 @@ class _HomePageState extends State<HomePage> {
       db.todaysHabitList[index][1] = value;
     });
     db.updateDatabase();
+
+    if (value == true) {
+      _controller.play();
+    } else {
+      _controller.stop();
+    }
   }
 
   //create a new habit
@@ -74,6 +80,30 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+  }
+
+  Path drawStar(Size size) {
+    // Method to convert degree to radians
+    double degToRad(double deg) => deg * (pi / 180.0);
+
+    const numberOfPoints = 5;
+    final halfWidth = size.width / 2;
+    final externalRadius = halfWidth;
+    final internalRadius = halfWidth / 2.5;
+    final degreesPerStep = degToRad(360 / numberOfPoints);
+    final halfDegreesPerStep = degreesPerStep / 2;
+    final path = Path();
+    final fullAngle = degToRad(360);
+    path.moveTo(size.width, halfWidth);
+
+    for (double step = 0; step < fullAngle; step += degreesPerStep) {
+      path.lineTo(halfWidth + externalRadius * cos(step),
+          halfWidth + externalRadius * sin(step));
+      path.lineTo(halfWidth + internalRadius * cos(step + halfDegreesPerStep),
+          halfWidth + internalRadius * sin(step + halfDegreesPerStep));
+    }
+    path.close();
+    return path;
   }
 
   //save new habit
@@ -123,14 +153,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    /*if (db.checkCompleteHabits() == true) {
-      _controller.play();
-    } else {
-      _controller.stop();
-    }*/
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.topCenter,
       children: [
         Scaffold(
           backgroundColor: Colors.grey[300],
@@ -163,9 +194,13 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        /*ConfettiWidget(
+        ConfettiWidget(
           confettiController: _controller,
-        )*/
+          emissionFrequency: 0.1,
+          blastDirection: -pi / 2,
+          gravity: 0.25,
+          createParticlePath: drawStar,
+        )
       ],
     );
   }
