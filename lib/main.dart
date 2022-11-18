@@ -9,6 +9,7 @@ void main() async {
 
   //open a box
   await Hive.openBox("Habit_Database");
+  await Hive.openBox("Habit_Database2");
 
   runApp(const MyApp());
 }

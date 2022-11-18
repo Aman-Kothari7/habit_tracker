@@ -22,9 +22,7 @@ https://strivecloud.io/blog/app-gamification/10-ways-to-drive-engagement/
 Pending:
 - Notifications - 1. everyday morning reminder to complete habits, 2. Evening - update on habits left/completed message
 - Change color theme of app or Green Red
-
-- Dos/ Dont's habits - heatmap for donts - slide between 2 pages
-
+- Pop up boxes/tour of app during first open up
 - Complete design overhaul
 
 
@@ -32,6 +30,7 @@ Completed:
 - Box color to green after completed habit (if in color statement)
 - Change setting icon to edit/rename icon
 - Reward/celebration animation once habit is completed
+- Dos/ Dont's habits - heatmap for donts - slide between 2 pages
 
 Future:
 - Monthly statistics email
@@ -76,3 +75,8 @@ backgroundColor: Colors.grey[300],
                 ),
               ],
             ),
+
+Kartik token: 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
+
+Create the tomorrow you want today
+
