@@ -23,8 +23,9 @@ Pending:
 - Notifications - 1. everyday morning reminder to complete habits, 2. Evening - update on habits left/completed message
 - Change color theme of app or Green Red
 - Pop up boxes/tour of app during first open up
-- Complete design overhaul
-
+- Complete design overhaul - dialog box to enter habits
+- Tapping on floatingActionButton should automatically open keyboard textfield
+- can add golden streak image on info pop up
 
 Completed:
 - Box color to green after completed habit (if in color statement)

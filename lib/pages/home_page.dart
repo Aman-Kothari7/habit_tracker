@@ -170,6 +170,35 @@ class _HomePageState extends State<HomePage> {
           ),
           body: ListView(
             children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 20.0,
+                  right: 250.0,
+                  top: 0.0,
+                  bottom: 0.0,
+                ),
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => const AlertDialog(
+                              title: Text(
+                                "Make Habits",
+                                style: TextStyle(fontSize: 24.0),
+                              ),
+                              content: Text(
+                                "Press the \u{2795} button to add habits you want to form \n\n \u{2611} Check the habits at the end of the day \n\n \u{1F4C5} View monthly progress in a single view on the calendar \n\n\n Aim for the Golden streak!",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18.0,
+                                ),
+                              ),
+                            ));
+                  },
+                  icon: Icon(Icons.info_outline),
+                  label: Text("Info"),
+                ),
+              ),
               //monthly summary heat map
               MonthlySummary(
                   datasets: db.heatMapDataSet,

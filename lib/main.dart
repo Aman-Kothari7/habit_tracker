@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/pages/home_page.dart';
+import 'package:habit_tracker/pages/intropages.dart';
 import 'package:habit_tracker/pages/main_home_navbar.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -9,20 +10,21 @@ void main() async {
 
   //open a box
   await Hive.openBox("Habit_Database");
-  await Hive.openBox("Habit_Database2");
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({
+    super.key,
+  });
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainHomePage(),
+      home: OnBoardScreen(),
       theme: ThemeData(primarySwatch: Colors.green),
     );
   }
