@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../intro_pages/intro_page1.dart';
@@ -60,7 +61,10 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
 
                 onLastPage
                     ? GestureDetector(
-                        onTap: () {
+                        onTap: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setBool('showHome', true);
+
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
                             return MainHomePage();

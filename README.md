@@ -25,7 +25,8 @@ Pending:
 - Pop up boxes/tour of app during first open up
 - Complete design overhaul - dialog box to enter habits
 - Tapping on floatingActionButton should automatically open keyboard textfield
-- can add golden streak image on info pop up
+- can add golden streak image on info pop u
+- Add shadows(clickable items) and ui changes to improve app
 
 Completed:
 - Box color to green after completed habit (if in color statement)
@@ -81,3 +82,4 @@ Kartik token: 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
 
 Create the tomorrow you want today
 
+Aman token-  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
