@@ -27,6 +27,17 @@ Pending:
 - Tapping on floatingActionButton should automatically open keyboard textfield
 - can add golden streak image on info pop u
 - Add shadows(clickable items) and ui changes to improve app
+- Change tick box to cross 'x' making box in habits breaking page
+
+Design:
+- Info card
+- Task dialog box
+- Task bar icons - nav bar
+- Task cards -
+- Choosing colors of making or breaking habits
+- App icon - logo
+simplistic design
+Review play store/ ios process
 
 Completed:
 - Box color to green after completed habit (if in color statement)

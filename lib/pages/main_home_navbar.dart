@@ -37,12 +37,12 @@ class _MainHomePageState extends State<MainHomePage> {
         //selectedFontSize: 18,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.handyman_outlined),
+            icon: Icon(Icons.radio_button_unchecked),
             label: 'Make',
             backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.broken_image_outlined),
+            icon: Icon(Icons.close),
             label: 'Break',
             backgroundColor: Colors.blue,
           ),

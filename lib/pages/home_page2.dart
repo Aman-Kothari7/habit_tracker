@@ -173,7 +173,9 @@ class _HomePage2State extends State<HomePage2> {
                   top: 0.0,
                   bottom: 0.0,
                 ),
-                child: ElevatedButton.icon(
+                child: IconButton(
+                  icon: Icon(Icons.info_outline),
+                  iconSize: 25,
                   onPressed: () {
                     showDialog(
                         context: context,
@@ -191,8 +193,6 @@ class _HomePage2State extends State<HomePage2> {
                               ),
                             ));
                   },
-                  icon: Icon(Icons.info_outline),
-                  label: Text("Info"),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 ),
               ),
