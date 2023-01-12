@@ -19,7 +19,7 @@ class HabitTile2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
       child: Slidable(
         endActionPane: ActionPane(motion: const StretchMotion(), children: [
           //setting option
@@ -54,10 +54,13 @@ class HabitTile2 extends StatelessWidget {
                   activeColor: Colors.red,
                   onChanged: onChanged),
               //habit title
-              Text(
-                habitName,
-                style: TextStyle(
-                  color: habitCompleted == true ? Colors.white : Colors.black,
+              SizedBox(
+                child: Text(
+                  maxLines: 1,
+                  habitName,
+                  style: TextStyle(
+                    color: habitCompleted == true ? Colors.white : Colors.black,
+                  ),
                 ),
               ),
 

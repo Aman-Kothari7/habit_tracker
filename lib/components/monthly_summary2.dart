@@ -13,17 +13,40 @@ class MonthlySummary2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 25, bottom: 25),
-      child: HeatMap(
-        startDate: createDateTimeObject(startDate),
-        endDate: DateTime.now().add(const Duration(days: 0)),
+      margin: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            offset: const Offset(
+              5.0,
+              5.0,
+            ),
+            blurRadius: 10.0,
+            spreadRadius: 2.0,
+          ),
+          BoxShadow(
+            color: Colors.white,
+            offset: const Offset(0.0, 0.0),
+            blurRadius: 0.0,
+            spreadRadius: 0.0,
+          ),
+        ],
+      ),
+      height: 310,
+      width: 350,
+      padding: const EdgeInsets.all(20),
+      child: HeatMapCalendar(
+        //startDate: createDateTimeObject(startDate),
+        //endDate: DateTime.now().add(const Duration(days: 121)),
         datasets: datasets,
         colorMode: ColorMode.color,
-        defaultColor: Colors.grey[200],
-        textColor: Colors.white,
+        defaultColor: Colors.grey[75],
+        textColor: Colors.black,
         showColorTip: false,
-        showText: true,
-        scrollable: true,
+        flexible: true,
+        //showText: true,
+        //scrollable: true,
         size: 30,
         colorsets: const {
           1: Color.fromARGB(20, 222, 2, 2),
@@ -35,7 +58,7 @@ class MonthlySummary2 extends StatelessWidget {
           7: Color.fromARGB(140, 222, 2, 2),
           8: Color.fromARGB(160, 222, 2, 2),
           9: Color.fromARGB(180, 222, 2, 2),
-          10: Color.fromARGB(255, 215, 190, 105),
+          10: Color.fromARGB(255, 243, 212, 108),
         },
         onClick: (value) {
           ScaffoldMessenger.of(context)

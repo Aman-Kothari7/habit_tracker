@@ -66,6 +66,7 @@ class _HomePageState extends State<HomePage> {
 
   //create a new habit
   final _newHabitNameController = TextEditingController();
+  final _EditHabitNameController = TextEditingController();
 
   void createNewHabit() {
     //show alert dialog for user to enter the new habit details
@@ -123,11 +124,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   void openHabitSettings(int index) {
+    _EditHabitNameController.clear();
     showDialog(
       context: context,
       builder: (context) {
         return MyAlertBox(
-          controller: _newHabitNameController,
+          controller: _EditHabitNameController,
           hintText: db.todaysHabitList[index][0],
           onSave: () => saveExistingHabit(index),
           onCancel: cancelDialogBox,
@@ -139,7 +141,7 @@ class _HomePageState extends State<HomePage> {
   //save existing habit with a new name
   void saveExistingHabit(int index) {
     setState(() {
-      db.todaysHabitList[index][0] = _newHabitNameController.text;
+      db.todaysHabitList[index][0] = _EditHabitNameController.text;
     });
     Navigator.pop(context);
     db.updateDatabase();
@@ -164,40 +166,35 @@ class _HomePageState extends State<HomePage> {
       alignment: Alignment.topCenter,
       children: [
         Scaffold(
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Colors.grey[200],
           floatingActionButton: MyFloatingActionButton(
             onPressed: createNewHabit,
           ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
           body: ListView(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20.0,
-                  right: 250.0,
-                  top: 0.0,
-                  bottom: 0.0,
-                ),
-                child: IconButton(
-                  icon: Icon(Icons.info_outline),
-                  iconSize: 25,
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) => const AlertDialog(
-                              title: Text(
-                                "Make Habits",
-                                style: TextStyle(fontSize: 24.0),
+              IconButton(
+                alignment: Alignment.topLeft,
+                icon: Icon(Icons.info_outline),
+                iconSize: 25,
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => const AlertDialog(
+                            title: Text(
+                              "Make Habits",
+                              style: TextStyle(fontSize: 24.0),
+                            ),
+                            content: Text(
+                              "Press the \u{2795} button to add habits you want to form \n\n \u{2611} Check the habits at the end of the day \n\n \u{1F4C5} View monthly progress in a single view on the calendar \n\n\n Aim for the Golden streak!",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
                               ),
-                              content: Text(
-                                "Press the \u{2795} button to add habits you want to form \n\n \u{2611} Check the habits at the end of the day \n\n \u{1F4C5} View monthly progress in a single view on the calendar \n\n\n Aim for the Golden streak!",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                            ));
-                  },
-                ),
+                            ),
+                          ));
+                },
               ),
               //monthly summary heat map
               MonthlySummary(
