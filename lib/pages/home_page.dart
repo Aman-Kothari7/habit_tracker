@@ -172,6 +172,36 @@ class _HomePageState extends State<HomePage> {
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: BottomAppBar(
+            color: Colors.white,
+            shape: CircularNotchedRectangle(),
+            notchMargin: 5,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.radio_button_unchecked,
+                      color: Colors.green,
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    }),
+                IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    color: Colors.green,
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage2()));
+                  },
+                ),
+              ],
+            ),
+          ),
           body: ListView(
             children: [
               IconButton(

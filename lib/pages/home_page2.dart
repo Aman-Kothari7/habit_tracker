@@ -10,6 +10,7 @@ import '../components/habit_tile2.dart';
 import '../components/monthly_summary2.dart';
 import '../components/my_fab.dart';
 import '../components/my_alert_box.dart';
+import 'home_page.dart';
 
 class HomePage2 extends StatefulWidget {
   const HomePage2({Key? key}) : super(key: key);
@@ -167,6 +168,36 @@ class _HomePage2State extends State<HomePage2> {
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: BottomAppBar(
+            color: Colors.white,
+            shape: CircularNotchedRectangle(),
+            notchMargin: 5,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.radio_button_unchecked,
+                      color: Colors.green,
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    }),
+                IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    color: Colors.green,
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage2()));
+                  },
+                ),
+              ],
+            ),
+          ),
           body: ListView(
             children: [
               IconButton(
