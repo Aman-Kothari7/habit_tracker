@@ -176,25 +176,66 @@ class _HomePage2State extends State<HomePage2> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                    icon: Icon(
-                      Icons.radio_button_unchecked,
-                      color: Colors.green,
-                    ),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
-                    }),
-                IconButton(
-                  icon: Icon(
-                    Icons.close,
-                    color: Colors.green,
-                  ),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage2()));
-                  },
+                Padding(
+                  padding: EdgeInsets.fromLTRB(30, 0, 20, 10),
+                  child: TextButton.icon(
+                      label: Text(
+                        "Make",
+                        style: TextStyle(fontSize: 20, color: Colors.black54),
+                      ),
+                      icon: Icon(
+                        Icons.radio_button_unchecked,
+                        color: Colors.green,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      }),
                 ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 0, 30, 10),
+                  child: TextButton.icon(
+                      label: Text(
+                        "Break",
+                        style: TextStyle(fontSize: 20, color: Colors.black54),
+                      ),
+                      icon: Icon(
+                        Icons.close,
+                        color: Colors.red,
+                        size: 24,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage2()));
+                      }),
+                ),
+                // TextButton(
+                //     child: Padding(
+                //         padding: EdgeInsets.fromLTRB(40, 0, 20, 10),
+                //         child: Text(
+                //           "Make",
+                //           style: TextStyle(fontSize: 20, color: Colors.black54),
+                //         )),
+                //     onPressed: () {
+                //       Navigator.push(context,
+                //           MaterialPageRoute(builder: (context) => HomePage()));
+                //     }),
+                // TextButton(
+                //     child: Padding(
+                //         padding: EdgeInsets.fromLTRB(20, 0, 40, 10),
+                //         child: Text(
+                //           "Break",
+                //           style: TextStyle(fontSize: 20, color: Colors.black54),
+                //         )),
+                //     onPressed: () {
+                //       Navigator.push(context,
+                //           MaterialPageRoute(builder: (context) => HomePage2()));
+                //     }),
               ],
             ),
           ),
