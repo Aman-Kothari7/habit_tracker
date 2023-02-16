@@ -8,6 +8,8 @@ class MyFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+      tooltip: "Add a habit",
+      backgroundColor: Colors.green[400],
       onPressed: onPressed,
       // mini: true,
       elevation: 20,

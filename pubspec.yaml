@@ -38,7 +38,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   flutter_heatmap_calendar: ^1.0.5
-  confetti: ^0.6.0
+  confetti: ^0.7.0
   smooth_page_indicator: ^1.0.0+2
 
 

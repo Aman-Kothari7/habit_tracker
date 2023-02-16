@@ -162,6 +162,41 @@ class _HomePage2State extends State<HomePage2> {
       alignment: Alignment.topCenter,
       children: [
         Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.red[300],
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("BREAK", style: TextStyle(color: Colors.white, fontSize: 22,letterSpacing: 2),),
+              ],
+            ),
+            automaticallyImplyLeading: false,
+            actions: <Widget>[
+              IconButton(
+                alignment: Alignment.center,
+                icon: Icon(Icons.info_outline),
+                iconSize: 25,
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => const AlertDialog(
+                        title: Text(
+                          "Break Habits",
+                          style: TextStyle(fontSize: 24.0),
+                        ),
+                        content: Text(
+                          "Press the \u{2795} button to add habits you want to break \n\n \u{2611} Check the habits at the end of the day \n\n \u{1F4C5} View monthly progress in a single view on the calendar \n\n\n Aim for the Golden streak!",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                          ),
+                        ),
+                      ));
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              ),
+              ],
+          ),
           backgroundColor: Colors.grey[200],
           floatingActionButton: MyFloatingActionButton2(
             onPressed: createNewHabit,
@@ -241,29 +276,7 @@ class _HomePage2State extends State<HomePage2> {
           ),
           body: ListView(
             children: [
-              IconButton(
-                alignment: Alignment.topLeft,
-                icon: Icon(Icons.info_outline),
-                iconSize: 25,
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) => const AlertDialog(
-                            title: Text(
-                              "Break Habits",
-                              style: TextStyle(fontSize: 24.0),
-                            ),
-                            content: Text(
-                              "Press the \u{2795} button to add habits you want to break \n\n \u{2611} Check the habits at the end of the day \n\n \u{1F4C5} View monthly progress in a single view on the calendar \n\n\n Aim for the Golden streak!",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18.0,
-                              ),
-                            ),
-                          ));
-                },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              ),
+
               //monthly summary heat map
               MonthlySummary2(
                   datasets: db.heatMapDataSet,
@@ -293,8 +306,8 @@ class _HomePage2State extends State<HomePage2> {
           emissionFrequency: 0.1,
           blastDirection: -pi / 2,
           gravity: 0.25,
-          createParticlePath: drawStar,
-        )
+          //createParticlePath: drawStar,
+        ),
       ],
     );
   }

@@ -12,6 +12,8 @@ class MonthlySummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double ScreenHeight = MediaQuery.of(context).size.height;
+    double ScreenWidth = MediaQuery.of(context).size.width;
     return Container(
       margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -33,8 +35,8 @@ class MonthlySummary extends StatelessWidget {
           ),
         ],
       ),
-      height: 310,
-      width: 350,
+      height: ScreenHeight * 0.41,
+      width: ScreenWidth * 0.8,
       padding: const EdgeInsets.all(20),
       child: HeatMapCalendar(
         //startDate: createDateTimeObject(startDate),
@@ -45,9 +47,10 @@ class MonthlySummary extends StatelessWidget {
         textColor: Colors.black,
         showColorTip: false,
         flexible: true,
+        monthFontSize: 18,
         //showText: true,
         //scrollable: true,
-        size: 30,
+        //size: 30,
         colorsets: const {
           1: Color.fromARGB(20, 2, 179, 8),
           2: Color.fromARGB(40, 2, 179, 8),

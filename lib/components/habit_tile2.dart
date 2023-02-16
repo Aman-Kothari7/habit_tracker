@@ -43,7 +43,7 @@ class HabitTile2 extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             //color: Colors.grey[100],
-            color: habitCompleted == true ? Colors.red : Colors.grey[100],
+            color: habitCompleted == true ? Colors.red[300]: Colors.white,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
@@ -51,7 +51,7 @@ class HabitTile2 extends StatelessWidget {
               //checkbox
               Checkbox(
                   value: habitCompleted,
-                  activeColor: Colors.red,
+                  activeColor: Colors.red[300],
                   onChanged: onChanged),
               //habit title
               SizedBox(
