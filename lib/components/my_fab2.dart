@@ -12,7 +12,7 @@ class MyFloatingActionButton2 extends StatelessWidget {
       backgroundColor: Colors.red[300],
       onPressed: onPressed,
       //elevation: 20,
-      child: Icon(Icons.add),
+      child: const Icon(Icons.add),
     );
   }
 }

@@ -8,7 +8,6 @@ import 'package:hive/hive.dart';
 
 import '../components/habit_tile2.dart';
 import '../components/monthly_summary2.dart';
-import '../components/my_fab.dart';
 import '../components/my_alert_box.dart';
 import 'home_page.dart';
 
@@ -80,30 +79,6 @@ class _HomePage2State extends State<HomePage2> {
     );
   }
 
-  Path drawStar(Size size) {
-    // Method to convert degree to radians
-    double degToRad(double deg) => deg * (pi / 180.0);
-
-    const numberOfPoints = 5;
-    final halfWidth = size.width / 2;
-    final externalRadius = halfWidth;
-    final internalRadius = halfWidth / 2.5;
-    final degreesPerStep = degToRad(360 / numberOfPoints);
-    final halfDegreesPerStep = degreesPerStep / 2;
-    final path = Path();
-    final fullAngle = degToRad(360);
-    path.moveTo(size.width, halfWidth);
-
-    for (double step = 0; step < fullAngle; step += degreesPerStep) {
-      path.lineTo(halfWidth + externalRadius * cos(step),
-          halfWidth + externalRadius * sin(step));
-      path.lineTo(halfWidth + internalRadius * cos(step + halfDegreesPerStep),
-          halfWidth + internalRadius * sin(step + halfDegreesPerStep));
-    }
-    path.close();
-    return path;
-  }
-
   //save new habit
   void saveNewHabit() {
     setState(() {
@@ -166,36 +141,40 @@ class _HomePage2State extends State<HomePage2> {
             backgroundColor: Colors.red[300],
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text("BREAK", style: TextStyle(color: Colors.white, fontSize: 22,letterSpacing: 2),),
+              children: const [
+                Text(
+                  "BREAK",
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 22, letterSpacing: 2),
+                ),
               ],
             ),
             automaticallyImplyLeading: false,
             actions: <Widget>[
               IconButton(
                 alignment: Alignment.center,
-                icon: Icon(Icons.info_outline),
+                icon: const Icon(Icons.info_outline),
                 iconSize: 25,
                 onPressed: () {
                   showDialog(
                       context: context,
                       builder: (context) => const AlertDialog(
-                        title: Text(
-                          "Break Habits",
-                          style: TextStyle(fontSize: 24.0),
-                        ),
-                        content: Text(
-                          "Press the \u{2795} button to add habits you want to break \n\n \u{2611} Check the habits at the end of the day \n\n \u{1F4C5} View monthly progress in a single view on the calendar \n\n\n Aim for the Golden streak!",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                      ));
+                            title: Text(
+                              "Break Habits",
+                              style: TextStyle(fontSize: 24.0),
+                            ),
+                            content: Text(
+                              "Press the \u{2795} button to add habits you want to break \n\n \u{2611} Check the habits at the end of the day \n\n \u{1F4C5} View monthly progress in a single view on the calendar \n\n\n Aim for the Golden streak!",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                              ),
+                            ),
+                          ));
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
               ),
-              ],
+            ],
           ),
           backgroundColor: Colors.grey[200],
           floatingActionButton: MyFloatingActionButton2(
@@ -205,20 +184,20 @@ class _HomePage2State extends State<HomePage2> {
               FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: BottomAppBar(
             color: Colors.white,
-            shape: CircularNotchedRectangle(),
+            shape: const CircularNotchedRectangle(),
             notchMargin: 5,
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 20, 10),
+                  padding: const EdgeInsets.fromLTRB(30, 0, 20, 10),
                   child: TextButton.icon(
-                      label: Text(
+                      label: const Text(
                         "Make",
                         style: TextStyle(fontSize: 20, color: Colors.black54),
                       ),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.radio_button_unchecked,
                         color: Colors.green,
                         size: 20,
@@ -227,17 +206,17 @@ class _HomePage2State extends State<HomePage2> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                                builder: (context) => const HomePage()));
                       }),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(20, 0, 30, 10),
+                  padding: const EdgeInsets.fromLTRB(20, 0, 30, 10),
                   child: TextButton.icon(
-                      label: Text(
+                      label: const Text(
                         "Break",
                         style: TextStyle(fontSize: 20, color: Colors.black54),
                       ),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.close,
                         color: Colors.red,
                         size: 24,
@@ -246,37 +225,14 @@ class _HomePage2State extends State<HomePage2> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomePage2()));
+                                builder: (context) => const HomePage2()));
                       }),
                 ),
-                // TextButton(
-                //     child: Padding(
-                //         padding: EdgeInsets.fromLTRB(40, 0, 20, 10),
-                //         child: Text(
-                //           "Make",
-                //           style: TextStyle(fontSize: 20, color: Colors.black54),
-                //         )),
-                //     onPressed: () {
-                //       Navigator.push(context,
-                //           MaterialPageRoute(builder: (context) => HomePage()));
-                //     }),
-                // TextButton(
-                //     child: Padding(
-                //         padding: EdgeInsets.fromLTRB(20, 0, 40, 10),
-                //         child: Text(
-                //           "Break",
-                //           style: TextStyle(fontSize: 20, color: Colors.black54),
-                //         )),
-                //     onPressed: () {
-                //       Navigator.push(context,
-                //           MaterialPageRoute(builder: (context) => HomePage2()));
-                //     }),
               ],
             ),
           ),
           body: ListView(
             children: [
-
               //monthly summary heat map
               MonthlySummary2(
                   datasets: db.heatMapDataSet,

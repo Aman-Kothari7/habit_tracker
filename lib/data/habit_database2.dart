@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:habit_tracker/datetime/date_time.dart';
 import 'package:hive/hive.dart';
 
@@ -12,12 +9,6 @@ class HabitDatabase2 {
 
   //create initial default data
   void createDefaultData() {
-    List todaysHabitList = [
-      //[habitName, habitCompleted]
-      ["Morning Run", false],
-      ["Read Book", false],
-    ];
-
     _myBox.put("START_DATE", todaysDateFormatted());
   }
 

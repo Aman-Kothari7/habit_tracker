@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 //return todays date formated as yyyymmdd
 String todaysDateFormatted() {
   //today

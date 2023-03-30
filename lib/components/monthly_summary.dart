@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_heat_map/flutter_heat_map.dart';
 import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
-import 'package:habit_tracker/datetime/date_time.dart';
 
 class MonthlySummary extends StatelessWidget {
   final Map<DateTime, int>? datasets;
@@ -12,15 +10,13 @@ class MonthlySummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double ScreenHeight = MediaQuery.of(context).size.height;
-    double ScreenWidth = MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.all(20),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.all(20),
+      decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
             color: Colors.grey,
-            offset: const Offset(
+            offset: Offset(
               5.0,
               5.0,
             ),
@@ -29,14 +25,12 @@ class MonthlySummary extends StatelessWidget {
           ),
           BoxShadow(
             color: Colors.white,
-            offset: const Offset(0.0, 0.0),
+            offset: Offset(0.0, 0.0),
             blurRadius: 0.0,
             spreadRadius: 0.0,
           ),
         ],
       ),
-      height: ScreenHeight * 0.41,
-      width: ScreenWidth * 0.8,
       padding: const EdgeInsets.all(20),
       child: HeatMapCalendar(
         //startDate: createDateTimeObject(startDate),

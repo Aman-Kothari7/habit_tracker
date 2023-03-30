@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyAlertBox extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final controller;
   final String hintText;
   final VoidCallback onSave;
@@ -17,7 +17,7 @@ class MyAlertBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       backgroundColor: Colors.white,
       content: TextField(
@@ -37,19 +37,19 @@ class MyAlertBox extends StatelessWidget {
       actions: [
         MaterialButton(
           onPressed: onSave,
-          child: Text("Save", style: TextStyle(color: Colors.black)),
           color: Colors.white,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(12.0))),
           elevation: 7,
+          child: const Text("Save", style: TextStyle(color: Colors.black)),
         ),
         MaterialButton(
           onPressed: onCancel,
-          child: Text("Cancel", style: TextStyle(color: Colors.black)),
           color: Colors.white,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(12.0))),
           elevation: 7,
+          child: const Text("Cancel", style: TextStyle(color: Colors.black)),
         ),
       ],
     );

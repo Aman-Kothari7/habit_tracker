@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/data/habit_database.dart';
-import 'package:hive/hive.dart';
-
-import '../components/habit_tile.dart';
-import '../components/monthly_summary.dart';
-import '../components/my_fab.dart';
-import '../components/my_alert_box.dart';
 import 'home_page.dart';
 import 'home_page2.dart';
 
@@ -20,8 +13,8 @@ class _MainHomePageState extends State<MainHomePage> {
   int currentIndex = 0;
 
   final screens = [
-    HomePage(),
-    HomePage2(),
+    const HomePage(),
+    const HomePage2(),
   ];
 
   @override

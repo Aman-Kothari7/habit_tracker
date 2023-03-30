@@ -13,7 +13,7 @@ class MyFloatingActionButton extends StatelessWidget {
       onPressed: onPressed,
       // mini: true,
       elevation: 20,
-      child: Icon(Icons.add),
+      child: const Icon(Icons.add),
     );
   }
 }
